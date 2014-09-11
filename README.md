@@ -44,24 +44,21 @@ Type: `DOM element`
 
 Output callback
 
-### generateFromImage
-Generate character art from image source
+### Generate character art from image source
 ````javascript
 Schwartz.prototype.generateFromImage(
     String src
 )
 ````
 
-### generateFromImage
-Generate character art from video
+### Generate character art from video
 ````javascript
 Schwartz.prototype.generateFromVideo(
     DOM element of video
 )
 ````
 
-### setCharSet
-Set up characters
+### Set up characters
 
 ````javascript
 Schwartz.prototype.setCharSet(
