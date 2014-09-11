@@ -9,7 +9,7 @@ sCHwARTz - Character Art
 
 ### Constructor
 ````javascript
-Schwartz Schwartz(
+Schwartz new Schwartz(
     [Object options]
 )
 ````
