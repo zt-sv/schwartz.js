@@ -1,7 +1,7 @@
-schwartz
+schwartz.js
 ========
 
-«Use the schwartz, Lone Starr»
+May the schwartz be with you!
 
 sCHwARTz - Character Art
 
