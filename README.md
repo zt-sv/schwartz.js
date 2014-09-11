@@ -9,9 +9,9 @@ sCHwARTz - Character Art
 
 ### Constructor
 ````javascript
-new Schwartz(
+Schwartz Schwartz(
     [Object options]
-) -> {Schwartz}
+)
 ````
 #### Options
 
@@ -35,33 +35,33 @@ Default: 'pre'
 Type: `String`
 
 ##### options.container
-Type: `DOM element`
+Type: `DOMElement`
 
 Output container
 
 ##### options.callback
-Type: `DOM element`
+Type: `Function`
 
 Output callback
 
 ### Generate character art from image source
 ````javascript
-Schwartz.prototype.generateFromImage(
+void generateFromImage(
     String src
 )
 ````
 
 ### Generate character art from video
 ````javascript
-Schwartz.prototype.generateFromVideo(
-    DOM element of video
+void generateFromVideo(
+    DOMElement video
 )
 ````
 
 ### Set up characters
 
 ````javascript
-Schwartz.prototype.setCharSet(
+void setCharSet(
     String str
 )
 ````
