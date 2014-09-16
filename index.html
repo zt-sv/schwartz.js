@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <title>Schwartz.js by 13rentgen</title>
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <h1>Schwartz.js</h1>
+        <h2>May the schwartz be with you!</h2>
+
+        <section id="downloads">
+          <a href="https://github.com/13rentgen/schwartz.js/zipball/master" class="btn">Download as .zip</a>
+          <a href="https://github.com/13rentgen/schwartz.js/tarball/master" class="btn">Download as .tar.gz</a>
+          <a href="https://github.com/13rentgen/schwartz.js" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <h1>
+<a name="schwartzjs" class="anchor" href="#schwartzjs"><span class="octicon octicon-link"></span></a>schwartz.js</h1>
+
+<p>May the schwartz be with you!</p>
+
+<p>sCHwARTz - Character Art</p>
+
+<h2>
+<a name="api-spec" class="anchor" href="#api-spec"><span class="octicon octicon-link"></span></a>API spec</h2>
+
+<h3>
+<a name="constructor" class="anchor" href="#constructor"><span class="octicon octicon-link"></span></a>Constructor</h3>
+
+<div class="highlight highlight-javascript"><pre><span class="nx">Schwartz</span> <span class="k">new</span> <span class="nx">Schwartz</span><span class="p">(</span>
+    <span class="p">[</span><span class="nb">Object</span> <span class="nx">options</span><span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+
+<h4>
+<a name="options" class="anchor" href="#options"><span class="octicon octicon-link"></span></a>Options</h4>
+
+<h5>
+<a name="optionsinverse" class="anchor" href="#optionsinverse"><span class="octicon octicon-link"></span></a>options.inverse</h5>
+
+<p>Type: <code>Boolean</code>
+Default: False</p>
+
+<p>Inverse image</p>
+
+<h5>
+<a name="optionsmatrixdimensions" class="anchor" href="#optionsmatrixdimensions"><span class="octicon octicon-link"></span></a>options.matrixDimensions</h5>
+
+<p>Type: <code>Object</code>
+Default: {"x": 5, "y": 10}</p>
+
+<p>Dimensions</p>
+
+<h5>
+<a name="optionslinetagname" class="anchor" href="#optionslinetagname"><span class="octicon octicon-link"></span></a>options.lineTagName</h5>
+
+<p>Type: <code>String</code>
+Default: 'pre'</p>
+
+<h5>
+<a name="optionslineclassname" class="anchor" href="#optionslineclassname"><span class="octicon octicon-link"></span></a>options.lineClassName</h5>
+
+<p>Type: <code>String</code></p>
+
+<h5>
+<a name="optionscontainer" class="anchor" href="#optionscontainer"><span class="octicon octicon-link"></span></a>options.container</h5>
+
+<p>Type: <code>DOMElement</code></p>
+
+<p>Output container</p>
+
+<h5>
+<a name="optionscallback" class="anchor" href="#optionscallback"><span class="octicon octicon-link"></span></a>options.callback</h5>
+
+<p>Type: <code>Function</code></p>
+
+<p>Output callback</p>
+
+<h3>
+<a name="generate-character-art-from-image-source" class="anchor" href="#generate-character-art-from-image-source"><span class="octicon octicon-link"></span></a>Generate character art from image source</h3>
+
+<div class="highlight highlight-javascript"><pre><span class="k">void</span> <span class="nx">generateFromImage</span><span class="p">(</span>
+    <span class="nb">String</span> <span class="nx">src</span>
+<span class="p">)</span>
+</pre></div>
+
+<h3>
+<a name="generate-character-art-from-video" class="anchor" href="#generate-character-art-from-video"><span class="octicon octicon-link"></span></a>Generate character art from video</h3>
+
+<div class="highlight highlight-javascript"><pre><span class="k">void</span> <span class="nx">generateFromVideo</span><span class="p">(</span>
+    <span class="nx">DOMElement</span> <span class="nx">video</span>
+<span class="p">)</span>
+</pre></div>
+
+<h3>
+<a name="set-up-characters" class="anchor" href="#set-up-characters"><span class="octicon octicon-link"></span></a>Set up characters</h3>
+
+<div class="highlight highlight-javascript"><pre><span class="k">void</span> <span class="nx">setCharSet</span><span class="p">(</span>
+    <span class="nb">String</span> <span class="nx">str</span>
+<span class="p">)</span>
+</pre></div>
+
+<h2>
+<a name="usage-examples" class="anchor" href="#usage-examples"><span class="octicon octicon-link"></span></a>Usage Examples</h2>
+
+<h3>
+<a name="generate-from-image" class="anchor" href="#generate-from-image"><span class="octicon octicon-link"></span></a>Generate from image</h3>
+
+<div class="highlight highlight-javascript"><pre><span class="kd">var</span>
+    <span class="nx">body</span>    <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">'body'</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span>
+    <span class="nx">outDiv</span>  <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'div'</span><span class="p">),</span>
+    <span class="nx">schwartz</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Schwartz</span><span class="p">({</span>
+        <span class="nx">container</span><span class="o">:</span> <span class="nx">outDiv</span><span class="p">,</span>
+        <span class="nx">lineClassName</span><span class="o">:</span> <span class="s1">'myCssClass'</span>
+    <span class="p">});</span>
+<span class="c1">// end of vars</span>
+
+<span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">outDiv</span><span class="p">);</span>
+<span class="nx">schwartz</span><span class="p">.</span><span class="nx">generateFromImage</span><span class="p">(</span><span class="s1">'/path/to/img.jpg'</span><span class="p">);</span>
+</pre></div>
+
+<h3>
+<a name="generate-from-video" class="anchor" href="#generate-from-video"><span class="octicon octicon-link"></span></a>Generate from video</h3>
+
+<div class="highlight highlight-javascript"><pre><span class="kd">var</span>
+    <span class="nx">body</span>    <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">'body'</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span>
+    <span class="nx">video</span>   <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">'video'</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span>
+    <span class="nx">outDiv</span>  <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'div'</span><span class="p">),</span>
+
+    <span class="nx">schwartz</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Schwartz</span><span class="p">({</span>
+        <span class="nx">inverse</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nx">matrixDimensions</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">x</span><span class="o">:</span> <span class="mi">5</span><span class="p">,</span>
+            <span class="nx">y</span><span class="o">:</span> <span class="mi">10</span>
+        <span class="p">},</span>
+        <span class="nx">container</span><span class="o">:</span> <span class="nx">outDiv</span><span class="p">,</span>
+        <span class="nx">lineClassName</span><span class="o">:</span> <span class="s1">'myCssClass'</span>
+    <span class="p">});</span>
+<span class="c1">// end of vars</span>
+
+<span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">outDiv</span><span class="p">);</span>
+<span class="nx">schwartz</span><span class="p">.</span><span class="nx">generateFromVideo</span><span class="p">(</span><span class="nx">video</span><span class="p">);</span>
+</pre></div>
+
+<h2>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>Copyright (c) 2014 Alexandr Zaytcev. Licensed under the MIT license.</p>
+      </section>
+    </div>
+
+    
+  </body>
+</html>
