@@ -245,3 +245,14 @@ a {
 .cf {
   zoom:1;
 }
+
+
+
+/* Shwartz custom */
+.shwartzGraphic {
+  background: none;
+  border: medium none;
+  font-size: 5px;
+  margin: -3px 0;
+  padding: 0;
+}
