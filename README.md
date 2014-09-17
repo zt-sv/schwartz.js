@@ -1,4 +1,4 @@
-[schwartz.js](http://13rentgen.github.io/schwartz.js. )
+[schwartz.js](http://13rentgen.github.io/schwartz.js)
 ========
 
 May the schwartz be with you!
