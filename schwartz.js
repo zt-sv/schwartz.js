@@ -1,6 +1,6 @@
 /**
  * Generate ACII art from image or video
- * 
+ *
  * @module   Schwartz
  * @version  0.1
  *
@@ -76,7 +76,7 @@
                  *
                  * @memberOf    module:Schwartz~Schwartz
                  * @callback    parseImageCallback
-                 * 
+                 *
                  * @param       {String[]}  stringArray     Art strings by line
                  */
 
@@ -131,7 +131,7 @@
                  * @memberOf    module:Schwartz~Schwartz
                  * @member      loadImage
                  * @private
-                 * 
+                 *
                  * @type        {Array}
                  */
                 charSet = [' ', '.', ',', ':', ';', '*', '|', '~', 'I', '1', '?', '7', '>', 'Y', 'F', '4', 'V', '#', '2', '9', '6', '8', '%', 'N', 'B', 'Q', 'M', '@', 'W'],
@@ -148,7 +148,7 @@
                  *
                  * @memberOf    module:Schwartz~Schwartz
                  * @callback    loadImageCallback
-                 * 
+                 *
                  * @param       {Object}    imageData
                  */
 
@@ -256,8 +256,10 @@
                                 avg = (imgPixels.data[index] + imgPixels.data[index + 1] + imgPixels.data[index + 2]) / 3;
                             }
 
-                            sum += avg;
-                            count++;
+                            if ( !isNaN(avg) ) {
+                                sum += avg;
+                                count++;
+                            }
                         }
                     }
 
