@@ -29,9 +29,9 @@
  *
  *        schwartz = new Schwartz({
  *            inverse: true,
- *            matrixDimensions: {
- *                x: 5,
- *                y: 10
+ *            textDimensions: {
+ *                cols: 200,
+ *                rows: 120
  *            },
  *            container: outDiv,
  *            lineClassName: 'myCssClass'
