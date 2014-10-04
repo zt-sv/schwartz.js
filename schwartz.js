@@ -2,7 +2,7 @@
  * Generate ACII art from image or video
  *
  * @module   Schwartz
- * @version  1.1
+ * @version  1.2
  *
  * @author   Zaytsev Alexandr
  *
@@ -293,6 +293,9 @@
 
                     this.dimX = Math.round(imgW/this.dimW);
                     this.dimY = Math.round(imgH/this.dimH);
+
+                    this.dimX = ( this.dimX < 1) ? 1 : this.dimX;
+                    this.dimY = ( this.dimY < 1) ? 1 : this.dimY;
 
                     // fast remove all container's childs
                     if ( hasContainer ) {
