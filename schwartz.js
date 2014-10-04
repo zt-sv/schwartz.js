@@ -111,6 +111,17 @@
                     this.lineClassName  = options.lineClassName || false;
                     this.callback       = options.callback || false;
 
+                    /**
+                     * Default symbols
+                     *
+                     * @memberOf    module:Schwartz~Schwartz
+                     * @member      loadImage
+                     * @private
+                     *
+                     * @type        {Array}
+                     */
+                    this.charSet        = [' ', '.', ',', ':', ';', '*', '|', '~', 'I', '1', '?', '7', '>', 'Y', 'F', '4', 'V', '#', '2', '9', '6', '8', '%', 'N', 'B', 'Q', 'M', '@', 'W'];
+
                     if ( options.container ) {
                         this.hasContainer = true;
                         this.outContainer = options.container;
@@ -124,19 +135,8 @@
                         this.dimH = 40;
                     }
 
-                    charSet = ( this.inverse ) ? charSet : charSet.reverse();
+                    this.charSet = ( this.inverse ) ? this.charSet : this.charSet.reverse();
                 },
-
-                /**
-                 * Default symbols
-                 *
-                 * @memberOf    module:Schwartz~Schwartz
-                 * @member      loadImage
-                 * @private
-                 *
-                 * @type        {Array}
-                 */
-                charSet = [' ', '.', ',', ':', ';', '*', '|', '~', 'I', '1', '?', '7', '>', 'Y', 'F', '4', 'V', '#', '2', '9', '6', '8', '%', 'N', 'B', 'Q', 'M', '@', 'W'],
 
                 /**
                  * ==============================
@@ -205,9 +205,9 @@
                     // end of vars
 
                     if ( isNaN(val) ) {
-                        asciival = charSet[charSet.length-1];
+                        asciival = this.charSet[this.charSet.length-1];
                     } else {
-                        asciival = charSet[Math.round(val/(256/(charSet.length-1)))];
+                        asciival = this.charSet[Math.round(val/(256/(this.charSet.length-1)))];
                     }
 
                     return asciival;
@@ -399,7 +399,7 @@
                 c.fillStyle = "#111";
                 c.strokeStyle = "#111";
                 c.font = '20px monospace';
-                charSet = [];
+                this.charSet = [];
 
                 for ( i = 0; i < str.length; i++ ) {
                     // reset canvas
@@ -422,7 +422,7 @@
 
                 for ( i = 0; i < all.length; i++ ) {
                     if ( all[i] ) {
-                        charSet.push(all[i]);
+                        this.charSet.push(all[i]);
                     }
                 }
             };
