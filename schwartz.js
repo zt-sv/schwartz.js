@@ -2,7 +2,7 @@
  * Generate ACII art from image or video
  *
  * @module   Schwartz
- * @version  0.1
+ * @version  1.0
  *
  * @author   Zaytsev Alexandr
  *
@@ -123,6 +123,8 @@
                         this.dimX = 5;
                         this.dimY = 10;
                     }
+
+                    charSet = ( this.inverse ) ? charSet : charSet.reverse();
                 },
 
                 /**
@@ -199,14 +201,13 @@
                  */
                 getSymbol = function( val ) {
                     var
-                        arr = (this.inverse) ? charSet : charSet.reverse(),
                         asciival;
                     // end of vars
 
                     if ( isNaN(val) ) {
-                        asciival = arr[arr.length-1];
+                        asciival = charSet[charSet.length-1];
                     } else {
-                        asciival = arr[Math.round(val/(256/(arr.length-1)))];
+                        asciival = charSet[Math.round(val/(256/(charSet.length-1)))];
                     }
 
                     return asciival;
@@ -325,10 +326,6 @@
                             if ( lineClassName ) {
                                 p.className = lineClassName;
                             }
-
-                            // p.style.fontFamily = 'monospace';
-                            // p.style.margin = '-3px 0';
-                            // p.style.fontSize = '10';
 
                             outContainer.appendChild(p);
                         }
