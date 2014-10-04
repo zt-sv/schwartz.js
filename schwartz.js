@@ -336,9 +336,6 @@
                         y += this.dimY;
                     }
 
-                    console.info(this.dimX);
-                    console.info(this.dimY);
-
                     if ( typeof this.callback !== 'undefined' && typeof this.callback === 'function' ) {
                         this.callback(art);
                     }
