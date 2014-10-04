@@ -21,9 +21,9 @@ Default: False
 
 Inverse image
 
-##### options.matrixDimensions
+##### options.textDimensions
 Type: `Object`
-Default: {"x": 5, "y": 10}
+Default: {"cols": 80, "rows": 40}
 
 Dimensions
 

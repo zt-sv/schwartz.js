@@ -2,7 +2,7 @@
  * Generate ACII art from image or video
  *
  * @module   Schwartz
- * @version  1.0
+ * @version  1.1
  *
  * @author   Zaytsev Alexandr
  *
@@ -87,9 +87,9 @@
                  *
                  * @param        {Object}               [options]
                  * @param        {Boolean}              [options.inverse=false]
-                 * @param        {Object}               [options.matrixDimensions]
-                 * @param        {Number}               [options.matrixDimensions.x=5]
-                 * @param        {Number}               [options.matrixDimensions.y=10]
+                 * @param        {Object}               [options.textDimensions]
+                 * @param        {Number}               [options.textDimensions.cols=80]
+                 * @param        {Number}               [options.textDimensions.rows=40]
                  * @param        {String}               [options.lineTagName=pre]
                  * @param        {String}               [options.lineClassName]
                  * @param        {DOM Element}          [options.container]
@@ -116,12 +116,12 @@
                         this.outContainer = options.container;
                     }
 
-                    if ( options.matrixDimensions ) {
-                        this.dimX = options.matrixDimensions.x || 5;
-                        this.dimY = options.matrixDimensions.y || 10;
+                    if ( options.textDimensions ) {
+                        this.dimW = options.textDimensions.cols || 80;
+                        this.dimH = options.textDimensions.rows || 40;
                     } else {
-                        this.dimX = 5;
-                        this.dimY = 10;
+                        this.dimW = 80;
+                        this.dimH = 40;
                     }
 
                     charSet = ( this.inverse ) ? charSet : charSet.reverse();
@@ -291,6 +291,9 @@
                         x, y, avg;
                     //end of vars
 
+                    this.dimX = Math.round(imgW/this.dimW);
+                    this.dimY = Math.round(imgH/this.dimH);
+
                     // fast remove all container's childs
                     if ( hasContainer ) {
                         while ( outContainer.firstChild ) {
@@ -332,6 +335,9 @@
 
                         y += this.dimY;
                     }
+
+                    console.info(this.dimX);
+                    console.info(this.dimY);
 
                     if ( typeof this.callback !== 'undefined' && typeof this.callback === 'function' ) {
                         this.callback(art);
@@ -426,15 +432,15 @@
 
             /**
              * @memberOf    module:Schwartz~Schwartz
-             * @method      setMatrixDimensions
+             * @method      setTextDimensions
              * @public
              *
-             * @param       {Number}    x
-             * @param       {Number}    y
+             * @param       {Number}    cols
+             * @param       {Number}    rows
              */
-            Schwartz.prototype.setMatrixDimensions = function( x, y ) {
-                this.dimX = x;
-                this.dimY = y;
+            Schwartz.prototype.setTextDimensions = function( cols, rows ) {
+                this.dimW = cols;
+                this.dimH = rows;
             };
 
             /**
