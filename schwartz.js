@@ -2,7 +2,7 @@
  * Generate ACII art from image or video
  *
  * @module   Schwartz
- * @version  1.4
+ * @version  1.5
  *
  * @author   Zaytsev Alexandr
  *
@@ -77,7 +77,13 @@
                  * @memberOf    module:Schwartz~Schwartz
                  * @callback    parseImageCallback
                  *
-                 * @param       {String[]}  stringArray     Art strings by line
+                 * @param       {Object[][]}  res       Art strings by line
+                 * @param       {Number}      res.r     Red channel average
+                 * @param       {Number}      res.g     Green channel average
+                 * @param       {Number}      res.b     Blue channel average
+                 * @param       {Number}      res.a     Alpha channel average
+                 * @param       {Number}      res.c     Composite average
+                 * @param       {Number}      res.sym   Symbol
                  */
 
                 /**
@@ -93,7 +99,7 @@
                  * @param        {String}               [options.lineTagName=pre]
                  * @param        {String}               [options.lineClassName]
                  * @param        {DOM Element}          [options.container]
-                 * @param        {parseImageCallback}   [options.callback]
+                 * @param        {parseImageCallback}   [options.render]
                  */
                 Schwartz = function Schwartz( options ) {
                     // enforces new
@@ -109,7 +115,7 @@
                     this.inverse        = options.inverse || false;
                     this.lineTagName    = options.lineTagName || 'pre';
                     this.lineClassName  = options.lineClassName || false;
-                    this.callback       = options.callback || false;
+                    this.callback       = options.render || false;
 
                     /**
                      * Default symbols
@@ -203,6 +209,8 @@
                     var
                         asciival;
                     // end of vars
+
+                    // console.info(val);
 
                     if ( isNaN(val) ) {
                         asciival = this.charSet[this.charSet.length-1];
@@ -303,6 +311,7 @@
                         imgW            = imageData.width,
                         imgH            = imageData.height,
                         art             = [],
+                        strChar,
                         str,
                         symbol,
                         p,
@@ -323,7 +332,8 @@
                     }
 
                     for ( y = 0; y < imgH; ) {
-                        str = '';
+                        str = [];
+                        strChar = '';
 
                         for ( x = 0; x < imgW; ) {
                             avg = getPixelGroupAvg({
@@ -335,7 +345,9 @@
                             });
 
                             symbol = getSymbol.call(this, avg.c);
-                            str += symbol;
+                            strChar += symbol;
+                            avg.sym = symbol;
+                            str.push(avg)
 
                             x += this.dimX;
                         }
@@ -345,7 +357,7 @@
                         // Output image as text into container
                         if ( hasContainer ) {
                             p = document.createElement(lineTagName);
-                            p.innerHTML = str;
+                            p.innerHTML = strChar;
 
                             if ( lineClassName ) {
                                 p.className = lineClassName;

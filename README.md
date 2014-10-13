@@ -39,7 +39,7 @@ Type: `DOMElement`
 
 Output container
 
-##### options.callback
+##### options.render
 Type: `Function`
 
 Output callback
