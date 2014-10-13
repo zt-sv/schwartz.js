@@ -2,7 +2,7 @@
  * Generate ACII art from image or video
  *
  * @module   Schwartz
- * @version  1.2
+ * @version  1.3
  *
  * @author   Zaytsev Alexandr
  *
@@ -207,7 +207,7 @@
                     if ( isNaN(val) ) {
                         asciival = this.charSet[this.charSet.length-1];
                     } else {
-                        asciival = this.charSet[Math.round(val/(256/(this.charSet.length-1)))];
+                        asciival = this.charSet[(this.charSet.length * val / 256 ) | 0];
                     }
 
                     return asciival;
