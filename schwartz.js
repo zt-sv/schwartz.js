@@ -2,7 +2,7 @@
  * Generate ACII art from image or video
  *
  * @module   Schwartz
- * @version  1.3
+ * @version  1.4
  *
  * @author   Zaytsev Alexandr
  *
@@ -226,9 +226,13 @@
                  * @param       {Number}    options.y                   Inital y position on the canvas
                  * @param       {Number}    options.stepX
                  * @param       {Number}    options.stepY
-                 * @param       {Boolean}   [options.onlyOpacity=false] Get average of opacity
                  *
-                 * @returns     {Number}                                Average gray scale value
+                 * @return      {Object}    res
+                 * @return      {Number}    res.r                       Red channel average
+                 * @return      {Number}    res.g                       Green channel average
+                 * @return      {Number}    res.b                       Blue channel average
+                 * @return      {Number}    res.a                       Alpha channel average
+                 * @return      {Number}    res.c                       Composite average
                  */
                 getPixelGroupAvg = function( options ) {
                     var
@@ -237,34 +241,48 @@
                         initY       = options.y,
                         stepX       = options.stepX,
                         stepY       = options.stepY,
-                        onlyOpacity = options.onlyOpacity || false,
 
-                        sum         = 0,
                         count       = 0,
+                        sumR        = 0,
+                        sumG        = 0,
+                        sumB        = 0,
+                        sumA        = 0,
+                        sumC        = 0,
+
+                        r, g, b, a, c,
 
                         x, y,
-                        index,
-                        avg;
+                        index;
                     // end of vars
 
                     for ( x = initX; x < initX + stepX; x++ ) {
                         for ( y = initY; y < initY + stepY; y++ ) {
                             index = (y * 4) * imgPixels.width + x * 4;
 
-                            if ( onlyOpacity ) {
-                                avg = imgPixels.data[index + 3];
-                            } else {
-                                avg = (imgPixels.data[index] + imgPixels.data[index + 1] + imgPixels.data[index + 2]) / 3;
-                            }
+                            r = imgPixels.data[index];
+                            g = imgPixels.data[index + 1];
+                            b = imgPixels.data[index + 2];
+                            a = imgPixels.data[index + 3];
+                            c = (imgPixels.data[index] + imgPixels.data[index + 1] + imgPixels.data[index + 2]) / 3;
 
-                            if ( !isNaN(avg) ) {
-                                sum += avg;
+                            if ( !isNaN(r) && !isNaN(g) && !isNaN(b) && !isNaN(a) && !isNaN(c) ) {
+                                sumR += r;
+                                sumG += g;
+                                sumB += b;
+                                sumA += a;
+                                sumC += c;
                                 count++;
                             }
                         }
                     }
 
-                    return parseInt(sum/count, 10);
+                    return {
+                        r: (sumR/count) | 0,
+                        g: (sumG/count) | 0,
+                        b: (sumB/count) | 0,
+                        a: (sumA/count) | 0,
+                        c: (sumC/count) | 0
+                    };
                 },
 
                 /**
@@ -316,7 +334,7 @@
                                 stepY: this.dimY
                             });
 
-                            symbol = getSymbol.call(this, avg);
+                            symbol = getSymbol.call(this, avg.c);
                             str += symbol;
 
                             x += this.dimX;
@@ -416,11 +434,10 @@
                         x: 0,
                         y: 0,
                         stepX: canvas.width,
-                        stepY: canvas.height,
-                        onlyOpacity: true
+                        stepY: canvas.height
                     });
 
-                    all[avg] = str[i];
+                    all[avg.a] = str[i];
                 }
 
                 for ( i = 0; i < all.length; i++ ) {
