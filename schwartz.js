@@ -2,7 +2,7 @@
  * Generate ACII art from image or video
  *
  * @module   Schwartz
- * @version  1.5
+ * @version  1.6
  *
  * @author   Zaytsev Alexandr
  *
@@ -429,16 +429,15 @@
 
                 canvas.width = 10;
                 canvas.height = 20;
-                c.fillStyle = "#111";
-                c.strokeStyle = "#111";
-                c.font = '20px monospace';
+                c.fillStyle = '#000';
+                c.font = '18px monospace';
                 this.charSet = [];
 
                 for ( i = 0; i < str.length; i++ ) {
                     // reset canvas
                     canvas.width = canvas.width;
 
-                    c.fillText(str[i], 0, 10, 10);
+                    c.fillText(str[i], 0, 18);
                     imgPixels = c.getImageData(0, 0, canvas.width, canvas.height);
 
                     avg = getPixelGroupAvg({
@@ -457,6 +456,8 @@
                         this.charSet.push(all[i]);
                     }
                 }
+
+                this.charSet = ( this.inverse ) ? this.charSet : this.charSet.reverse();
             };
 
             /**
