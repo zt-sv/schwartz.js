@@ -32,7 +32,9 @@
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
         <h1>
-<a name="schwartzjs" class="anchor" href="#schwartzjs"><span class="octicon octicon-link"></span></a>schwartz.js</h1>
+<a name="schwartzjs-" class="anchor" href="#schwartzjs-"><span class="octicon octicon-link"></span></a>
+<a href="http://13rentgen.github.io/schwartz.js">schwartz.js</a> <a href="https://travis-ci.org/13rentgen/schwartz.js"><img src="https://travis-ci.org/13rentgen/schwartz.js.svg" alt="Build Status"></a>
+</h1>
 
 <p>May the schwartz be with you!</p>
 
@@ -61,10 +63,10 @@ Default: False</p>
 <p>Inverse image</p>
 
 <h5>
-<a name="optionsmatrixdimensions" class="anchor" href="#optionsmatrixdimensions"><span class="octicon octicon-link"></span></a>options.matrixDimensions</h5>
+<a name="optionstextdimensions" class="anchor" href="#optionstextdimensions"><span class="octicon octicon-link"></span></a>options.textDimensions</h5>
 
 <p>Type: <code>Object</code>
-Default: {"x": 5, "y": 10}</p>
+Default: {"cols": 80, "rows": 40}</p>
 
 <p>Dimensions</p>
 
@@ -87,7 +89,7 @@ Default: 'pre'</p>
 <p>Output container</p>
 
 <h5>
-<a name="optionscallback" class="anchor" href="#optionscallback"><span class="octicon octicon-link"></span></a>options.callback</h5>
+<a name="optionsrender" class="anchor" href="#optionsrender"><span class="octicon octicon-link"></span></a>options.render</h5>
 
 <p>Type: <code>Function</code></p>
 
@@ -146,9 +148,9 @@ Default: 'pre'</p>
 
     <span class="nx">schwartz</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Schwartz</span><span class="p">({</span>
         <span class="nx">inverse</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="nx">matrixDimensions</span><span class="o">:</span> <span class="p">{</span>
-            <span class="nx">x</span><span class="o">:</span> <span class="mi">5</span><span class="p">,</span>
-            <span class="nx">y</span><span class="o">:</span> <span class="mi">10</span>
+        <span class="nx">textDimensions</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">cols</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span>
+            <span class="nx">rows</span><span class="o">:</span> <span class="mi">120</span>
         <span class="p">},</span>
         <span class="nx">container</span><span class="o">:</span> <span class="nx">outDiv</span><span class="p">,</span>
         <span class="nx">lineClassName</span><span class="o">:</span> <span class="s1">'myCssClass'</span>
