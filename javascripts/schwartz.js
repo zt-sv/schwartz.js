@@ -2,7 +2,7 @@
  * Generate ACII art from image or video
  *
  * @module   Schwartz
- * @version  1.7
+ * @version  1.6
  *
  * @author   Zaytsev Alexandr
  *
@@ -12,7 +12,8 @@
  *        body    = document.getElementsByTagName('body')[0],
  *        outDiv  = document.createElement('div'),
  *        schwartz = new Schwartz({
- *            detail: 60
+ *            container: outDiv,
+ *            lineClassName: 'myCssClass'
  *        });
  *    // end of vars
  *
@@ -28,7 +29,12 @@
  *
  *        schwartz = new Schwartz({
  *            inverse: true,
- *            detail: 60
+ *            textDimensions: {
+ *                cols: 200,
+ *                rows: 120
+ *            },
+ *            container: outDiv,
+ *            lineClassName: 'myCssClass'
  *        });
  *    // end of vars
  *

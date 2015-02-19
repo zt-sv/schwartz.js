@@ -21,11 +21,11 @@ Default: False
 
 Inverse image
 
-##### options.textDimensions
-Type: `Object`
-Default: {"cols": 80, "rows": 40}
+##### options.detail
+Type: `Nubmer`
+Default: 50
 
-Dimensions
+Depth of detail
 
 ##### options.lineTagName
 Type: `String`
@@ -73,6 +73,7 @@ void setCharSet(
 var
     body    = document.getElementsByTagName('body')[0],
     outDiv  = document.createElement('div'),
+
     schwartz = new Schwartz({
         container: outDiv,
         lineClassName: 'myCssClass'
@@ -92,10 +93,7 @@ var
 
     schwartz = new Schwartz({
         inverse: true,
-        textDimensions: {
-            cols: 200,
-            rows: 120
-        },
+        detail: 50,
         container: outDiv,
         lineClassName: 'myCssClass'
     });
