@@ -58,7 +58,7 @@
         });
     // end of vars
 
-    schwartz.generateFromImage('/images/monalisa.jpg');
+    schwartz.generateFromImage('http://13rentgen.github.io/schwartz.js/images/monalisa.jpg');
     input.addEventListener('change', handleFiles);
 }(
     this,
