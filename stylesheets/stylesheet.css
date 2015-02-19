@@ -421,3 +421,21 @@ Small Device Styles
   }
 
 }
+
+
+/*******************************************************************************
+Schwartz speific
+*******************************************************************************/
+.schwartz-container {
+  /*width: 800px;*/
+  /*height: 600px;*/
+  border: 1px solid #eee;
+}
+
+.schwartz-txt {
+  background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+  box-shadow: none;
+  font-size: 10px;
+  margin: -3px;
+  padding: 0;
+}
