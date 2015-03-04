@@ -477,10 +477,10 @@
              * Inverse image
              *
              * @memberOf    module:Schwartz~Schwartz
-             * @method      inverse
+             * @method      inverseImage
              * @public
              */
-            Schwartz.prototype.inverse = function() {
+            Schwartz.prototype.inverseImage = function() {
                 this.charSet.reverse();
             };
 
