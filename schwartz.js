@@ -151,7 +151,7 @@
                  */
                 isNumber = function( n ) {
                     return !isNaN(parseFloat(n)) && isFinite(n);
-                };
+                },
 
                 /**
                  * After load image callback
