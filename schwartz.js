@@ -2,7 +2,7 @@
  * Generate ACII art from image or video
  *
  * @module   Schwartz
- * @version  1.9.2
+ * @version  1.9.3
  *
  * @author   Zaytsev Alexandr
  *
@@ -174,12 +174,13 @@
                  */
                 loadImage = function( src, callback ) {
                     var
-                        self = this,
+                        imgObj = new Image(),
+                        self   = this,
 
                         imageLoaded = function( ev ) {
                             var
-                                imgW = self.imgObj.width,
-                                imgH = self.imgObj.height,
+                                imgW = imgObj.width,
+                                imgH = imgObj.height,
                                 img  = ev.target,
                                 imageData;
                             // end of vars
@@ -193,9 +194,9 @@
                         };
                         // end of vars
 
-                        this.imgObj.onload = imageLoaded;
-                        this.imgObj.crossOrigin = 'use-credentials';
-                        this.imgObj.src = src;
+                        imgObj.onload      = imageLoaded;
+                        imgObj.crossOrigin = 'use-credentials';
+                        imgObj.src         = src;
                 },
 
                 /**
