@@ -65,7 +65,7 @@ void setCharSet(
 ### Inverse image
 
 ````javascript
-void inverse()
+void inverseImage()
 ````
 
 ##Usage Examples
