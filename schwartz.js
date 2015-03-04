@@ -497,8 +497,8 @@
                 // end of vars
 
                 this.video       = video;
-                this.videoWidth  = video.videoWidth;
-                this.videoHeight = video.videoHeight;
+                this.videoWidth  = video.width;
+                this.videoHeight = video.height;
 
                 video.addEventListener('play', function() {
                     videoTimerCallback.call(self);
