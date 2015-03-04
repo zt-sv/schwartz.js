@@ -2,7 +2,7 @@
  * Generate ACII art from image or video
  *
  * @module   Schwartz
- * @version  1.9.1
+ * @version  1.9.2
  *
  * @author   Zaytsev Alexandr
  *
@@ -374,7 +374,7 @@
                     this.canvas.width  = videoWidth;
                     this.canvas.height = videoHeight;
 
-                    this.c.drawImage(this.video, 0, 0);
+                    this.c.drawImage(this.video, 0, 0, videoWidth, videoHeight);
                     imageData = this.c.getImageData(0, 0, videoWidth, videoHeight);
                     parseImage.call(this, imageData);
 
@@ -509,7 +509,6 @@
             return Schwartz;
         }());
     // end of vars
-
 
     return Schwartz;
 });
