@@ -49,127 +49,6 @@
 <canvas id="uploadedImageContainer" class="schwartz-container"></canvas>
 
 <h2>
-<a name="api-spec" class="anchor" href="#api-spec"><span class="octicon octicon-link"></span></a>API spec</h2>
-
-<h3>
-<a name="constructor" class="anchor" href="#constructor"><span class="octicon octicon-link"></span></a>Constructor</h3>
-
-<div class="highlight highlight-javascript"><pre><span class="nx">Schwartz</span> <span class="k">new</span> <span class="nx">Schwartz</span><span class="p">(</span>
-    <span class="p">[</span><span class="nb">Object</span> <span class="nx">options</span><span class="p">]</span>
-<span class="p">)</span>
-</pre></div>
-
-<h4>
-<a name="options" class="anchor" href="#options"><span class="octicon octicon-link"></span></a>Options</h4>
-
-<h5>
-<a name="optionsinverse" class="anchor" href="#optionsinverse"><span class="octicon octicon-link"></span></a>options.inverse</h5>
-
-<p>Type: <code>Boolean</code>
-Default: False</p>
-
-<p>Inverse image</p>
-
-<h5>
-<a name="optionstextdimensions" class="anchor" href="#optionstextdimensions"><span class="octicon octicon-link"></span></a>options.textDimensions</h5>
-
-<p>Type: <code>Object</code>
-Default: {"cols": 80, "rows": 40}</p>
-
-<p>Dimensions</p>
-
-<h5>
-<a name="optionslinetagname" class="anchor" href="#optionslinetagname"><span class="octicon octicon-link"></span></a>options.lineTagName</h5>
-
-<p>Type: <code>String</code>
-Default: 'pre'</p>
-
-<h5>
-<a name="optionslineclassname" class="anchor" href="#optionslineclassname"><span class="octicon octicon-link"></span></a>options.lineClassName</h5>
-
-<p>Type: <code>String</code></p>
-
-<h5>
-<a name="optionscontainer" class="anchor" href="#optionscontainer"><span class="octicon octicon-link"></span></a>options.container</h5>
-
-<p>Type: <code>DOMElement</code></p>
-
-<p>Output container</p>
-
-<h5>
-<a name="optionsrender" class="anchor" href="#optionsrender"><span class="octicon octicon-link"></span></a>options.render</h5>
-
-<p>Type: <code>Function</code></p>
-
-<p>Output callback</p>
-
-<h3>
-<a name="generate-character-art-from-image-source" class="anchor" href="#generate-character-art-from-image-source"><span class="octicon octicon-link"></span></a>Generate character art from image source</h3>
-
-<div class="highlight highlight-javascript"><pre><span class="k">void</span> <span class="nx">generateFromImage</span><span class="p">(</span>
-    <span class="nb">String</span> <span class="nx">src</span>
-<span class="p">)</span>
-</pre></div>
-
-<h3>
-<a name="generate-character-art-from-video" class="anchor" href="#generate-character-art-from-video"><span class="octicon octicon-link"></span></a>Generate character art from video</h3>
-
-<div class="highlight highlight-javascript"><pre><span class="k">void</span> <span class="nx">generateFromVideo</span><span class="p">(</span>
-    <span class="nx">DOMElement</span> <span class="nx">video</span>
-<span class="p">)</span>
-</pre></div>
-
-<h3>
-<a name="set-up-characters" class="anchor" href="#set-up-characters"><span class="octicon octicon-link"></span></a>Set up characters</h3>
-
-<div class="highlight highlight-javascript"><pre><span class="k">void</span> <span class="nx">setCharSet</span><span class="p">(</span>
-    <span class="nb">String</span> <span class="nx">str</span>
-<span class="p">)</span>
-</pre></div>
-
-<h2>
-<a name="usage-examples" class="anchor" href="#usage-examples"><span class="octicon octicon-link"></span></a>Usage Examples</h2>
-
-<h3>
-<a name="generate-from-image" class="anchor" href="#generate-from-image"><span class="octicon octicon-link"></span></a>Generate from image</h3>
-
-<div class="highlight highlight-javascript"><pre><span class="kd">var</span>
-    <span class="nx">body</span>    <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">'body'</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span>
-    <span class="nx">outDiv</span>  <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'div'</span><span class="p">),</span>
-    <span class="nx">schwartz</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Schwartz</span><span class="p">({</span>
-        <span class="nx">container</span><span class="o">:</span> <span class="nx">outDiv</span><span class="p">,</span>
-        <span class="nx">lineClassName</span><span class="o">:</span> <span class="s1">'myCssClass'</span>
-    <span class="p">});</span>
-<span class="c1">// end of vars</span>
-
-<span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">outDiv</span><span class="p">);</span>
-<span class="nx">schwartz</span><span class="p">.</span><span class="nx">generateFromImage</span><span class="p">(</span><span class="s1">'/path/to/img.jpg'</span><span class="p">);</span>
-</pre></div>
-
-<h3>
-<a name="generate-from-video" class="anchor" href="#generate-from-video"><span class="octicon octicon-link"></span></a>Generate from video</h3>
-
-<div class="highlight highlight-javascript"><pre><span class="kd">var</span>
-    <span class="nx">body</span>    <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">'body'</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span>
-    <span class="nx">video</span>   <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">'video'</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span>
-    <span class="nx">outDiv</span>  <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'div'</span><span class="p">),</span>
-
-    <span class="nx">schwartz</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Schwartz</span><span class="p">({</span>
-        <span class="nx">inverse</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="nx">textDimensions</span><span class="o">:</span> <span class="p">{</span>
-            <span class="nx">cols</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span>
-            <span class="nx">rows</span><span class="o">:</span> <span class="mi">120</span>
-        <span class="p">},</span>
-        <span class="nx">container</span><span class="o">:</span> <span class="nx">outDiv</span><span class="p">,</span>
-        <span class="nx">lineClassName</span><span class="o">:</span> <span class="s1">'myCssClass'</span>
-    <span class="p">});</span>
-<span class="c1">// end of vars</span>
-
-<span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">outDiv</span><span class="p">);</span>
-<span class="nx">schwartz</span><span class="p">.</span><span class="nx">generateFromVideo</span><span class="p">(</span><span class="nx">video</span><span class="p">);</span>
-</pre></div>
-
-<h2>
 <a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
 
 <p>Copyright (c) 2014 Alexandr Zaytcev. Licensed under the MIT license.</p>
@@ -186,7 +65,8 @@ Default: 'pre'</p>
 
     <script type='text/javascript'>
       !function(e,t,r){function n(){for(;d[0]&&"loaded"==d[0][f];)c=d.shift(),c[o]=!i.parentNode.insertBefore(c,i)}for(var s,a,c,d=[],i=e.scripts[0],o="onreadystatechange",f="readyState";s=r.shift();)a=e.createElement(t),"async"in i?(a.async=!1,e.head.appendChild(a)):i[f]?(d.push(a),a[o]=n):e.write("<"+t+' src="'+s+'" defer></'+t+">"),a.src=s}(document,"script",[
-            'https://raw.githubusercontent.com/13rentgen/schwartz.js/master/schwartz.js',
+            'https://raw.githubusercontent.com/13rentgen/schwartz.js/master/schwartz.js?sadfasdadvbxcbasdsdf',
+            'javascripts/dat.gui.min.js',
             'javascripts/main.js'
       ]);
     </script>

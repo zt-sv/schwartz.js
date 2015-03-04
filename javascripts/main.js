@@ -1,13 +1,19 @@
+var
+    datGui = new dat.GUI();
+
 /**
  * Render from uploaded image
  */
-!function( window, document ) {
+!function( window, document, gui ) {
     var
         body      = document.getElementsByTagName('body')[0],
         input     = document.getElementById('uploadInput'),
         imagePrev = document.getElementById('uploadedImagePreview'),
         canvas    = document.getElementById('uploadedImageContainer'),
         c         = canvas.getContext('2d'),
+        image     = 'http://13rentgen.github.io/schwartz.js/images/monalisa.jpg',
+
+        detailController,
 
         handleFiles = function( e ) {
             var
@@ -16,7 +22,8 @@
 
             reader.onload = function ( event ) {
                 imagePrev.setAttribute('src', event.target.result);
-                schwartz.generateFromImage(URL.createObjectURL(e.target.files[0]));
+                image = URL.createObjectURL(e.target.files[0]);
+                schwartz.generateFromImage(image);
             }
 
             reader.readAsDataURL(input.files[0]);
@@ -24,15 +31,13 @@
 
         renderToCanvas = function( result ) {
             var
-                rows      = result.length,
-                cols      = result[0].length,
-
-                font      = '6px monospace',
+                rows    = result.length,
+                cols    = result[0].length,
 
                 yOffset = 0, // Free space beetween symbols
                 xOffset = 0, // Free space beetween symbols
 
-                stepX, stepY, i, j, symbolInfo;
+                font, stepX, stepY, i, j, symbolInfo;
             // end of vars
 
             canvas.width  = imagePrev.width;
@@ -40,6 +45,8 @@
 
             stepX = imagePrev.width/cols;
             stepY = imagePrev.height/rows;
+
+            font  = stepY + 1 + 'px monospace';
 
             for ( i = 0; i < rows; i++ ) {
                 for ( j = 0; j < cols; j++ ) {
@@ -58,9 +65,24 @@
         });
     // end of vars
 
-    schwartz.generateFromImage('http://13rentgen.github.io/schwartz.js/images/monalisa.jpg');
+    schwartz.generateFromImage(image);
     input.addEventListener('change', handleFiles);
+
+    detailController  = gui.add(schwartz, 'detail', 1, 100);
+    inverseController = gui.add(schwartz, 'inverse');
+    gui.open();
+
+    detailController.onFinishChange(function( value ) {
+        schwartz.setDetail(value);
+        schwartz.generateFromImage(image);
+    });
+
+    inverseController.onFinishChange(function( value ) {
+        schwartz.inverseImage();
+        schwartz.generateFromImage(image);
+    });
 }(
     this,
-    this.document
+    this.document,
+    datGui.addFolder('Uploaded image controller')
 );
