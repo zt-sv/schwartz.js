@@ -1,6 +1,6 @@
 {
     "name" : "schwartz",
-    "version" : "1.9.2",
+    "version" : "1.9.3",
     "description" : "ASCII Art JavaScript library",
     "homepage" : "http://13rentgen.github.io/schwartz.js",
     "keywords" : ["javascript", "ascii", "art", "image", "video"],
