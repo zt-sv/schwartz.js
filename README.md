@@ -62,6 +62,12 @@ void setCharSet(
 )
 ````
 
+### Inverse image
+
+````javascript
+void inverse()
+````
+
 ##Usage Examples
 
 ### Generate from image

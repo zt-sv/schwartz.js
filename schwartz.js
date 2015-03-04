@@ -2,7 +2,7 @@
  * Generate ACII art from image or video
  *
  * @module   Schwartz
- * @version  1.7
+ * @version  1.9
  *
  * @author   Zaytsev Alexandr
  *
@@ -471,6 +471,17 @@
              */
             Schwartz.prototype.generateFromImage = function( src ) {
                 loadImage.call(this, src, parseImage);
+            };
+
+            /**
+             * Inverse image
+             *
+             * @memberOf    module:Schwartz~Schwartz
+             * @method      inverse
+             * @public
+             */
+            Schwartz.prototype.inverse = function() {
+                this.charSet.reverse();
             };
 
             /**
