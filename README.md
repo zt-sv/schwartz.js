@@ -27,18 +27,6 @@ Default: 50
 
 Depth of detail
 
-##### options.lineTagName
-Type: `String`
-Default: 'pre'
-
-##### options.lineClassName
-Type: `String`
-
-##### options.container
-Type: `DOMElement`
-
-Output container
-
 ##### options.render
 Type: `Function`
 
@@ -58,6 +46,14 @@ void generateFromVideo(
 )
 ````
 
+### Set up depth of detail
+
+````javascript
+void setDetail(
+    Number n
+)
+````
+
 ### Set up characters
 
 ````javascript
@@ -72,15 +68,17 @@ void setCharSet(
 ````javascript
 var
     body    = document.getElementsByTagName('body')[0],
-    outDiv  = document.createElement('div'),
+
+    render = function() {
+        //
+    },
 
     schwartz = new Schwartz({
-        container: outDiv,
-        lineClassName: 'myCssClass'
+        render: render,
+        detail: 60
     });
 // end of vars
 
-body.appendChild(outDiv);
 schwartz.generateFromImage('/path/to/img.jpg');
 ````
 
@@ -89,17 +87,18 @@ schwartz.generateFromImage('/path/to/img.jpg');
 var
     body    = document.getElementsByTagName('body')[0],
     video   = document.getElementsByTagName('video')[0],
-    outDiv  = document.createElement('div'),
+
+    render = function() {
+        //
+    },
 
     schwartz = new Schwartz({
+        render: render,
         inverse: true,
-        detail: 50,
-        container: outDiv,
-        lineClassName: 'myCssClass'
+        detail: 50
     });
 // end of vars
 
-body.appendChild(outDiv);
 schwartz.generateFromVideo(video);
 ````
 

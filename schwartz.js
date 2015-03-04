@@ -66,6 +66,14 @@
         Schwartz = (function() {
             var
                 /**
+                 * @const
+                 */
+                DEFAULT_DETAIL = 50,
+
+                DEFAULT_INVERSE = false,
+
+
+                /**
                  * After parse image callback
                  *
                  * @memberOf    module:Schwartz~Schwartz
@@ -88,9 +96,6 @@
                  * @param        {Object}               [options]
                  * @param        {Boolean}              [options.inverse=false]
                  * @param        {Number}               [options.detail=50]
-                 * @param        {String}               [options.lineTagName=pre]
-                 * @param        {String}               [options.lineClassName]
-                 * @param        {DOM Element}          [options.container]
                  * @param        {parseImageCallback}   [options.render]
                  */
                 Schwartz = function Schwartz( options ) {
@@ -104,9 +109,7 @@
                     this.imgObj        = new Image();
                     this.c             = this.canvas.getContext('2d');
 
-                    this.inverse       = options.inverse || false;
-                    this.lineTagName   = options.lineTagName || 'pre';
-                    this.lineClassName = options.lineClassName || false;
+                    this.inverse       = options.inverse || DEFAULT_INVERSE;
                     this.callback      = options.render || false;
 
                     /**
@@ -118,17 +121,12 @@
                      *
                      * @type        {Array}
                      */
-                    this.charSet        = [' ', '.', ',', ':', ';', '*', '|', '~', 'I', '1', '?', '7', '>', 'Y', 'F', '4', 'V', '#', '2', '9', '6', '8', '%', 'N', 'B', 'Q', 'M', '@', 'W'];
+                    this.charSet = [' ', '.', ',', ':', ';', '*', '|', '~', 'I', '1', '?', '7', '>', 'Y', 'F', '4', 'V', '#', '2', '9', '6', '8', '%', 'N', 'B', 'Q', 'M', '@', 'W'];
 
-                    if ( options.container ) {
-                        this.hasContainer = true;
-                        this.outContainer = options.container;
-                    }
-
-                    if ( options.detail && options.detail <= 100 && options.detail > 0 ) {
-                        this.detail = options.detail;
+                    if ( options.detail ) {
+                        this.setDetail(options.detail);
                     } else {
-                        this.detail = 50;
+                        this.detail = DEFAULT_DETAIL;
                     }
 
                     this.charSet = ( this.inverse ) ? this.charSet : this.charSet.reverse();
@@ -140,6 +138,20 @@
                  * ==============================
                  */
 
+                /**
+                 * Validate numbers
+                 *
+                 * @memberOf    module:Schwartz~Schwartz
+                 * @method      isNumber
+                 * @private
+                 *
+                 * @param       {*}         n
+                 *
+                 * @return      {Boolean}
+                 */
+                isNumber = function( n ) {
+                    return !isNaN(parseFloat(n)) && isFinite(n);
+                };
 
                 /**
                  * After load image callback
@@ -294,18 +306,12 @@
                  */
                 parseImage = function( imageData ) {
                     var
-                        outContainer  = this.outContainer,
-                        hasContainer  = this.hasContainer,
-                        lineTagName   = this.lineTagName,
-                        lineClassName = this.lineClassName,
-                        imgW          = imageData.width,
-                        imgH          = imageData.height,
-                        art           = [],
-                        strChar,
-                        str,
-                        symbol,
-                        p,
-                        x, y, avg;
+                        imgW = imageData.width,
+                        imgH = imageData.height,
+                        art  = [],
+
+                        strChar, str, symbol,
+                        p, x, y, avg;
                     //end of vars
 
                     this.dimX = Math.round((imgW * 100 / this.detail)/200);
@@ -314,15 +320,8 @@
                     this.dimX = ( this.dimX < 1) ? 1 : this.dimX;
                     this.dimY = ( this.dimY < 1) ? 1 : this.dimY;
 
-                    // fast remove all container's childs
-                    if ( hasContainer ) {
-                        while ( outContainer.firstChild ) {
-                            outContainer.removeChild(outContainer.firstChild);
-                        }
-                    }
-
                     for ( y = 0; y < imgH; ) {
-                        str = [];
+                        str     = [];
                         strChar = '';
 
                         for ( x = 0; x < imgW; ) {
@@ -334,27 +333,16 @@
                                 stepY: this.dimY
                             });
 
-                            symbol = getSymbol.call(this, avg.c);
+                            symbol  = getSymbol.call(this, avg.c);
                             strChar += symbol;
                             avg.sym = symbol;
+
                             str.push(avg)
 
                             x += this.dimX;
                         }
 
                         art.push(str);
-
-                        // Output image as text into container
-                        if ( hasContainer ) {
-                            p = document.createElement(lineTagName);
-                            p.innerHTML = strChar;
-
-                            if ( lineClassName ) {
-                                p.className = lineClassName;
-                            }
-
-                            outContainer.appendChild(p);
-                        }
 
                         y += this.dimY;
                     }
@@ -399,6 +387,30 @@
              * ========PUBLIC METHODS========
              * ==============================
              */
+
+            /**
+             * @memberOf    module:Schwartz~Schwartz
+             * @method      setDetail
+             * @public
+             *
+             * @param       {Number}    n   Level of detail
+             */
+            Schwartz.prototype.setDetail = function( n ) {
+                var
+                    newDetail;
+                // end of vars
+
+                // validate number
+                if ( isNumber(n) ) {
+                    newDetail = parseInt(n, 10);
+
+                    this.detail = ( newDetail < 1 ) ? 1 : ( newDetail > 100 ) ? 100 : newDetail;
+                } else {
+                    this.detail = DEFAULT_DETAIL;
+                }
+
+                return;
+            };
 
             /**
              * @memberOf    module:Schwartz~Schwartz
