@@ -1,0 +1,30 @@
+{
+  "name": "schwartz",
+  "main": "schwartz.js",
+  "version": "1.9.3",
+  "homepage": "http://13rentgen.github.io/schwartz.js/",
+  "authors": [
+    "Aleksandr Zaytsev <13rentgen@gmail.com>"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:13rentgen/schwartz.js.git"
+  },
+  "description": "Small ASCII art library. May the schwartz be with you!",
+  "moduleType": [
+    "amd",
+    "globals"
+  ],
+  "keywords": [
+    "ASCII",
+    "art"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
