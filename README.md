@@ -5,6 +5,10 @@ May the schwartz be with you!
 
 sCHwARTz - Character Art
 
+## Installation
+Install with [bower](http://bower.io/)
+`bower install schwartz.js`
+
 ## API spec
 
 ### Constructor
