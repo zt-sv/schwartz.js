@@ -2,13 +2,13 @@
   "name": "schwartz.js",
   "main": "schwartz.js",
   "version": "1.9.3",
-  "homepage": "http://13rentgen.github.io/schwartz.js/",
+  "homepage": "http://zt-sv.github.io/schwartz.js/",
   "authors": [
     "Aleksandr Zaytsev <13rentgen@gmail.com>"
   ],
   "repository": {
     "type": "git",
-    "url": "git@github.com:13rentgen/schwartz.js.git"
+    "url": "git@github.com:zt-sv/schwartz.js.git"
   },
   "description": "Small ASCII art library. May the schwartz be with you!",
   "moduleType": [

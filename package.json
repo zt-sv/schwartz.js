@@ -2,7 +2,7 @@
     "name" : "schwartz",
     "version" : "1.9.3",
     "description" : "ASCII Art JavaScript library",
-    "homepage" : "http://13rentgen.github.io/schwartz.js",
+    "homepage" : "http://zt-sv.github.io/schwartz.js",
     "keywords" : ["javascript", "ascii", "art", "image", "video"],
     "author" : "Zaytcev Aleksandr",
     "contributors" : [
@@ -13,7 +13,7 @@
     ],
     "repository":{
         "type" : "git",
-        "url" : "https://github.com/13rentgen/schwartz.js.git"
+        "url" : "https://github.com/zt-sv/schwartz.js.git"
     },
     "main" : "schwartz",
     "engines" : {
