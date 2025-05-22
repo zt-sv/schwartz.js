@@ -11,7 +11,7 @@ var
         imagePrev = document.getElementById('uploadedImagePreview'),
         canvas    = document.getElementById('uploadedImageContainer'),
         c         = canvas.getContext('2d'),
-        image     = 'http://13rentgen.github.io/schwartz.js/images/monalisa.jpg',
+        image     = 'http://zt-sv.github.io/schwartz.js/images/monalisa.jpg',
 
         detailController,
 
